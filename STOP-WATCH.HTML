@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>STOP-WATCH</title>
+    <style>
+        #whole {
+            width: 60vw;
+            /* height: 100vh; */
+            margin: 10vb 0 0 20vw;
+            /* background-color: aquamarine; */
+            border-radius: 15%;
+            box-shadow: 10% 10% 100% red;
+            animation-name: body;
+            animation-duration: 5s;
+            animation-iteration-count: infinite;
+            animation-direction: reverse;
+            animation-fill-mode: forward;
+            animation-timing-function: ease-in-out;
+        }
+
+        @keyframes body {
+            0% {
+
+                box-shadow: 0em 0em 20em red;
+            }
+
+            50% {
+                box-shadow: 0em 0em 20em blue;
+            }
+
+            100% {
+                box-shadow: 0em 0em 20em orange;
+            }
+        }
+
+        #main {
+            width: 50vw;
+            height: 40vh;
+            border: .5em double blue;
+            margin: auto;
+            border-radius: 5%;
+            margin-top: 4%;
+            margin-bottom: 4%;
+            /* box-shadow: 0em 0em 20em red; */
+        }
+
+        #buttons {
+            display: flex;
+            justify-content: space-evenly;
+        }
+
+        h1 {
+            text-align: center;
+            font-style: italic;
+            font-family: cursive;
+            font-size: 3rem;
+            color: rgb(54, 121, 121);
+            /* text-shadow: 10% 30% 10% rgb(255, 123, 0); */
+            animation: h1;
+            animation-duration: 1s;
+            animation-iteration-count: infinite;
+        }
+
+        /* @keyframes h1 {
+            0% {
+                opacity: 0;
+            }
+
+            50% {
+                opacity: 1;
+                color: red;
+            }
+
+            100% {
+                opacity: 0;
+                color: brown;
+            }
+        } */
+
+        .box {
+            width: 10vw;
+            height: 7vh;
+            font-weight: 900;
+            color: black;
+            background-color: rgb(250, 132, 132);
+            border-top-left-radius: 4%;
+            border-bottom-right-radius: 4%;
+        }
+
+        .box:hover {
+            background-color: rgb(148, 255, 171);
+        }
+    </style>
+</head>
+
+<body>
+    <div id="whole">
+        <div style="display: flex; justify-content: center;">
+            <button onclick="start2()" class="box">START HEADING</button>
+            <h1 id="text3"></h1>
+            <button onclick="stop2()" class="box">STOP HEADING</button>
+        </div>
+        <div id="main">
+            <div id="buttons">
+                <button onclick="start()" class="box">START</button>
+                <button onclick="stop()" class="box">STOP</button>
+                <button onclick="reset()" class="box">RESET</button>
+                <button onclick="lap()" class="box">LAP</button>
+            </div>
+            <b id="text2"></b>
+            <br>
+            <br>
+            <h1 id="text1">Timer Starts here !</h1>
+        </div>
+        <h2 id="lap" style="display: flex; text-indent: 5vw; flex-wrap: wrap;"></h2>
+    </div>
+</body>
+<script>
+    let obj, flag = 1, i = 0, obj2, para, div;
+    function start2() {
+        obj2 = setTimeout(
+            function test() {
+                document.getElementById("text3").innerHTML = "WELCOME GUYS!";
+            }, 3000
+        );
+    }
+    function stop2() {
+        clearTimeout(obj2);
+    }
+    var h = "0" + 0, m = "0" + 0, s = "0" + 0;
+    function start() {
+        if (flag == 1) {
+            obj = setInterval(function test() {
+                document.getElementById('text1').innerText = h + ":" + m + ":" + s;
+                s++;
+                s = s < 10 ? "0" + s : s;
+                if (s > 60) {
+                    m++;
+                    s = 0;
+                    m = m < 10 ? "0" + m : m;
+                }
+                if (m > 60) {
+                    h++;
+                    m = 0;
+                    h = h < 10 ? "0" + h : h;
+                }
+            }, 1000);
+            flag = 0;
+        }
+        else {
+            document.getElementById('text2').innerText = "Already Working";
+        }
+    }
+    function lap() {
+        div = document.createElement("div");
+        para = document.createElement("p");
+        para.innerText = h + ":" + m + ":" + s;
+        document.getElementById("lap").appendChild(div);
+        div.appendChild(para);
+        document.getElementById('text2').innerText = "";
+        //document.write(i - 1);
+    }
+    function reset() {
+        h = 0 + "0";
+        m = 0 + "0";
+        s = 0 + "0";
+        document.getElementById('text1').innerText = "Timer Starts here !";
+        clearInterval(obj);
+        flag = 1;
+        document.getElementById("lap").innerText = "";
+        document.getElementById('text2').innerText = "";
+    }
+    function stop() {
+        clearInterval(obj);
+        flag = 1;
+        document.getElementById('text2').innerText = "";
+    }
+</script>
+
+</html>
