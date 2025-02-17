@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>STOP-WATCH</title>
     <style>
         body {
-            background-color: #2e3a47; 
+            background-color: #2e3a47;
             font-family: Arial, sans-serif;
         }
 
@@ -14,18 +15,17 @@
             width: 90%;
             height: auto;
             margin: auto;
-            background-color: #a1a1a1; 
+            background-color: #a1a1a1;
             border-radius: 1.5vmax;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+            box-shadow: 10px 10px 40px rgba(0, 0, 0, 0.4);
         }
 
         #main {
             width: 90%;
             min-height: 40vh;
-            border: 0.2em solid #4a5d73; 
+            border: 0.2em solid #4a5d73;
             margin: auto;
             border-radius: 1vmax;
-            margin-top: 4%;
             margin-bottom: 4%;
         }
 
@@ -34,6 +34,10 @@
             flex-wrap: wrap;
             justify-content: space-evenly;
             gap: 10px 10px;
+        }
+
+        #whole>h1 {
+            font-size: 7vmin;
         }
 
         h1 {
@@ -57,13 +61,13 @@
 
         .box:hover {
             color: black;
-            background-color: white; 
+            background-color: white;
             width: 13vmax;
         }
 
         #lap {
             display: flex;
-            justify-content:left;
+            justify-content: left;
             flex-wrap: wrap;
             text-indent: 10vmax;
         }
@@ -74,6 +78,7 @@
         }
     </style>
 </head>
+
 <body>
     <div id="whole">
         <h1>Stop-Watch</h1>
@@ -142,4 +147,5 @@
         flag = 1;
     }
 </script>
+
 </html>
