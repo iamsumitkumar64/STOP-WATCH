@@ -22,11 +22,12 @@
 
         #main {
             width: 90%;
-            min-height: 40vh;
+            /* min-height: 40vh; */
             border: 0.2em solid #4a5d73;
             margin: auto;
             border-radius: 1vmax;
             margin-bottom: 4%;
+            margin-top: 2vmax;
         }
 
         #buttons {
@@ -41,6 +42,7 @@
         }
 
         h1 {
+            color: rgb(255, 253, 253);
             text-align: center;
             font-style: italic;
             font-family: 'Courier New', Courier, monospace;
@@ -56,7 +58,7 @@
             border: none;
             border-radius: 1vmax;
             transition: all ease .8s;
-            font-size: 1.2em;
+            font-size: 2vmax;
         }
 
         .box:hover {
@@ -82,15 +84,13 @@
 <body>
     <div id="whole">
         <h1>Stop-Watch</h1>
+        <div id="buttons">
+            <button onclick="start()" class="box">START</button>
+            <button onclick="stop()" class="box">STOP</button>
+            <button onclick="reset()" class="box">RESET</button>
+            <button onclick="lap()" class="box">LAP</button>
+        </div>
         <div id="main">
-            <div id="buttons">
-                <button onclick="start()" class="box">START</button>
-                <button onclick="stop()" class="box">STOP</button>
-                <button onclick="reset()" class="box">RESET</button>
-                <button onclick="lap()" class="box">LAP</button>
-            </div>
-            <br>
-            <br>
             <h1 id="text1">Timer Starts here !</h1>
         </div>
         <h2 id="lap"></h2>
@@ -102,7 +102,7 @@
 
     function start() {
         if (flag == 1) {
-            obj = setInterval(function test() {
+            obj = setInterval(() => {
                 document.getElementById('text1').innerText = h + ":" + m + ":" + s;
                 s++;
                 s = s < 10 ? "0" + s : s;
@@ -116,14 +116,13 @@
                     m = 0;
                     h = h < 10 ? "0" + h : h;
                 }
-            }, 800);
+            }, 750);
             flag = 0;
         }
         else {
             window.alert("Already Working");
         }
     }
-
     function lap() {
         div = document.createElement("div");
         para = document.createElement("p");
